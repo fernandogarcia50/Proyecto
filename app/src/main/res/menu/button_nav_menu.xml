@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+    android:id="@+id/leftFragment"
+    android:title="Perfil"
+    android:icon="@drawable/ic_account"
+    />
+    <item
+        android:id="@+id/principalFragment"
+        android:title="Buscar"
+        android:icon="@drawable/ic_search" />
+    <item
+        android:id="@+id/rightFragment"
+        android:title="Pokedex"
+        android:icon="@drawable/ic_storage" />
+</menu>
