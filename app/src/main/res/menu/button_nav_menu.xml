@@ -8,7 +8,10 @@
     <item
         android:id="@+id/principalFragment"
         android:title="Buscar"
-        android:icon="@drawable/ic_search" />
+        android:icon="@drawable/ic_search"
+
+        />
+
     <item
         android:id="@+id/rightFragment"
         android:title="Pokedex"
