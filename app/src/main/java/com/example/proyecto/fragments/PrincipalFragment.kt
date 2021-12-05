@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isVisible
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -55,6 +56,13 @@ class PrincipalFragment : Fragment() {
                 val foto = response.getJSONObject("sprites").getString("front_default")
                 val infoString = "Nombre: $nombre # Id: $id #Tipo:  $tipo # Peso: $peso # Hp: $hp #Ataque: $ataqye # Defensa: $defensa# Velocidad: $velocidad Foto: ${foto}"
                 Log.d("JsonResponse", "response: $infoString")
+                binding.mostrarNombre.setText(nombre)
+                binding.mostrarTipo.setText(tipo)
+                binding.mostrarHp.setText(hp.toString())
+                binding.mostrarAtack.setText(ataqye.toString())
+                binding.mostrarDefense.setText(defensa.toString())
+                binding.mostrarSpeed.setText(velocidad.toString())
+                binding.mostrarWeight.setText(peso.toString())
                 Glide.with(this).load(foto).into(binding.imageView3)
             },
             Response.ErrorListener { errorMessage ->
