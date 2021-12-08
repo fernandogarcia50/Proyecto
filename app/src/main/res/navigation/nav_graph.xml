@@ -15,10 +15,18 @@
         android:id="@+id/principalFragment"
         android:name="com.example.proyecto.fragments.PrincipalFragment"
         android:label="fragment_principal"
-        tools:layout="@layout/fragment_principal" />
+        tools:layout="@layout/fragment_principal">
+        <action
+            android:id="@+id/action_principalFragment_to_rightFragment"
+            app:destination="@id/rightFragment" />
+    </fragment>
     <fragment
         android:id="@+id/rightFragment"
         android:name="com.example.proyecto.fragments.RightFragment"
         android:label="fragment_right"
-        tools:layout="@layout/fragment_right" />
+        tools:layout="@layout/fragment_right" >
+        <action
+            android:id="@+id/action_rightFragment_to_principalFragment"
+            app:destination="@id/principalFragment" />
+    </fragment>
 </navigation>

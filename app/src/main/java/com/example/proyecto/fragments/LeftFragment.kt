@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyecto.R
 import com.example.proyecto.databinding.FragmentLeftBinding
+import com.example.proyecto.elements.DestinationAdapter
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import org.json.JSONObject
@@ -23,6 +25,11 @@ class LeftFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLeftBinding.inflate(inflater,container,false)
+
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val myDB= FirebaseDatabase.getInstance()
         database=myDB.reference
 
@@ -37,10 +44,10 @@ class LeftFragment : Fragment() {
                 binding.mostrarNivel.setText("${json.getInt("nivel")}")
                 binding.mostrarPokemon.setText("${json.getInt("pokemon")}")
             }else{
-               Log.d("Mensaje", "No se encontró el usuario")
+                Log.d("Mensaje", "No se encontró el usuario")
             }
         }
-        return binding.root
+
     }
 
 

@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fondo"
     tools:context=".fragments.RightFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="casual"
+    android:text="Pokedex"
+    android:textAlignment="center"
+    android:textSize="40sp"
+    android:textStyle="bold"
+    android:id="@+id/etrero"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    />
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="visible"
+        android:id="@+id/rv_pokemon_entries"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="izquierdo" />
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etrero"
+        app:layout_constraintBottom_toTopOf="@id/espacio"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/pokemon_item" />
+    <TextView
+        android:id="@+id/espacio"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_pokemon_entries"
+        app:layout_constraintBottom_toBottomOf="parent"
 
-</FrameLayout>
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
