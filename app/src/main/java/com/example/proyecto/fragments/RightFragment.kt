@@ -16,11 +16,15 @@ import com.example.proyecto.datos.GetDataModel
 import com.example.proyecto.datos.RemoveDataModel
 import com.example.proyecto.elements.DestinationAdapter
 import com.example.proyecto.elements.Metodo
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import org.json.JSONObject
 
 
 class RightFragment : Fragment(), Metodo {
 
     private lateinit var binding: FragmentRightBinding
+    private lateinit var database: DatabaseReference
     private val getDataModel: GetDataModel by viewModels()
     private val deleteDataModel: RemoveDataModel by viewModels()
     override fun onCreateView(
@@ -44,7 +48,8 @@ class RightFragment : Fragment(), Metodo {
                 }
             }else
             {
-
+                val adapter = DestinationAdapter(pokemonlist, this)
+                binding.rvPokemonEntries.adapter = adapter
             }
         })
 
@@ -52,20 +57,33 @@ class RightFragment : Fragment(), Metodo {
 
     override fun onClick(pokemon: Pokemon){
         Log.d("mensaje", "estoy llegando")
-        deleteDataModel.delete(pokemon)
-        actualiza()
+        getDataModel.delete(pokemon)
+        actualizarPerfil()
+
     }
-    fun actualiza(){
-        getDataModel.getPokemon()
-        getDataModel.savedPokemon.observe(viewLifecycleOwner, {pokemonlist->
-            if(!pokemonlist.isNullOrEmpty()){
-                val adapter = DestinationAdapter(pokemonlist, this)
-                binding.rvPokemonEntries.adapter = adapter
-            }else
-            {
-                val adapter = DestinationAdapter(pokemonlist, this)
-                binding.rvPokemonEntries.adapter = adapter
+    private fun actualizarPerfil(){
+        val myDB= FirebaseDatabase.getInstance()
+        database=myDB.reference
+        var pokemon:Int=0
+        database.child("usuarios").child("1").get().addOnSuccessListener { record ->
+
+            if (record.exists()) {
+                val json = JSONObject(record.value.toString())
+                pokemon=json.getInt("pokemon")
+                if(pokemon > 0){
+                    val actualizarPok = hashMapOf<String, Any>(
+                        "/usuarios/1/pokemon" to pokemon-1
+                    )
+                    Log.d("nuevop", "${pokemon}")
+                    database.updateChildren(actualizarPok)
+                }
+            }else{
+                Log.d("Mensaje", "No se encontró el usuario")
             }
-        })
+        }
+
+
     }
+
+
 }

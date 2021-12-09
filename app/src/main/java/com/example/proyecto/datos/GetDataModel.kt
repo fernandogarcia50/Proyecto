@@ -16,4 +16,12 @@ class GetDataModel: ViewModel() {
             savedPokemon.value = MyAppDataSource(pokemonDao).getPokemon().value
         }
     }
+    fun delete(pokemon: Pokemon){
+        viewModelScope.launch {
+            val pokemonDao = DataBaseManager.instance.database.pokemonDao()
+            MyAppDataSource(pokemonDao).delete(pokemon)
+            getPokemon()
+        }
+
+    }
 }

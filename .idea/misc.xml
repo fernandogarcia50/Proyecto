@@ -3,12 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/drawable/cards.xml" value="0.2703125" />
         <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/drawable/ic_account.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/layout/fragment_left.xml" value="0.16" />
+        <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/layout/fragment_left.xml" value="0.536" />
         <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/layout/fragment_principal.xml" value="0.536" />
-        <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/layout/fragment_right.xml" value="0.22505543237250555" />
-        <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/layout/pokemon_item.xml" value="0.4" />
+        <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/layout/fragment_right.xml" value="0.13991769547325103" />
+        <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/layout/pokemon_item.xml" value="0.1" />
         <entry key="..\:/Users/fer_g/AndroidStudioProjects/Proyecto/app/src/main/res/menu/button_nav_menu.xml" value="0.4" />
       </map>
     </option>

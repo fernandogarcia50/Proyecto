@@ -19,6 +19,8 @@ import com.example.proyecto.R
 import com.example.proyecto.database.Pokemon
 import com.example.proyecto.databinding.FragmentPrincipalBinding
 import com.example.proyecto.datos.SaveDataModel
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
 import java.security.Principal
@@ -28,6 +30,7 @@ import kotlin.math.log
 class PrincipalFragment : Fragment() {
     lateinit var queue: RequestQueue
     private lateinit var foto: String
+    private lateinit var database: DatabaseReference
     private val saveDatamodel : SaveDataModel by viewModels()
     private lateinit var binding: FragmentPrincipalBinding
     override fun onCreateView(
@@ -49,6 +52,7 @@ class PrincipalFragment : Fragment() {
         }
         binding.guardarDatos.setOnClickListener {
             guardar()
+            actualizarPerfil()
             val destination= PrincipalFragmentDirections.actionPrincipalFragmentToRightFragment()
             NavHostFragment.findNavController(this).navigate(destination)
         }
@@ -123,6 +127,28 @@ class PrincipalFragment : Fragment() {
         ))
 
         Log.d("mensaje", "${foto}")
+    }
+
+    private fun actualizarPerfil(){
+        val myDB= FirebaseDatabase.getInstance()
+        database=myDB.reference
+        var pokemon:Int=0
+        database.child("usuarios").child("1").get().addOnSuccessListener { record ->
+
+            if (record.exists()) {
+                val json = JSONObject(record.value.toString())
+                pokemon=json.getInt("pokemon")
+                val actualizarPok = hashMapOf<String, Any>(
+                    "/usuarios/1/pokemon" to pokemon+1
+                )
+                Log.d("nuevop", "${pokemon}")
+                database.updateChildren(actualizarPok)
+            }else{
+                Log.d("Mensaje", "No se encontró el usuario")
+            }
+        }
+
+
     }
 
 }
